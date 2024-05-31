@@ -36,6 +36,9 @@ alugueis['cep'] = alugueis.apply(lambda linha: substituir_cep_nao_encontrado(lin
 registros_excluidos = pd.concat([registros_excluidos, alugueis[alugueis['cep'] == 'CEP não encontrado']])
 alugueis = alugueis[alugueis['cep'] != 'CEP não encontrado']
 
+# Salvando registros excluídos
+registros_excluidos.to_csv('alugueis_dados_excluidos.csv')
+
 # Ajustando CEP's incompletos
 alugueis['cep'] = alugueis['cep'].astype(str).apply(ajustar_cep)
 
